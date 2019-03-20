@@ -63,22 +63,49 @@ window.onload = function(){
 	});
 };
 
-//Function called by all buttons
+//Function called everytime anything is clicked
 function clicked(pic){
+	//bool to see if image needs to be added or not
 	var add = true;
+	//if nothing has been clicked yet, start the array
 	if(clickOrder.length == 0){
 		clickOrder.push(pic);
 	} else {
+		//otherwise look through the whole array
 		for(var i = 0; i < clickOrder.length; i++){
+			//if the image has already been clicked
 			if(pic == clickOrder[i]){
+				//don't add it
 				add = false;
 			}
 		}
+		//if it needs to be added
 		if(add){
+			//add it
 			clickOrder.push(pic);
-			console.log(pic + " added to clickOrder!");
 		}
 	}
-	console.log("clicked done");
-	console.log(clickOrder);
+	
+	//bools to see who is accounted for
+	var img0In = false;
+	var img1In = false;
+	var img2In = false;
+	var img3In = false;
+	var img4In = false;
+	var img5In = false;
+	var img6In = false;
+	var img7In = false;
+	var clicksRecipt;
+	
+	//Make sure number of clicks is up to date
+	for(var i = 0; i < 8; i++){
+		//check to see who is highest
+		if(img0Clicks>img1Clicks){ //if img0 has been clicked more then any others
+			clicksRecipt += "Image 0: ";
+			clickCounts.push(img0Clicks);
+		}
+	}
+	
+	//Print out who has been clicked and how many times in descending order
+	console.log(clicksRecipt);
 };
