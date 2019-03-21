@@ -6,16 +6,15 @@ var img4;
 var img5;
 var img6;
 var img7;
-var img0Clicks;
-var img1Clicks;
-var img2Clicks;
-var img3Clicks;
-var img4Clicks;
-var img5Clicks;
-var img6Clicks;
-var img7Clicks;
+var img0Clicks = 0;
+var img1Clicks = 0;
+var img2Clicks = 0;
+var img3Clicks = 0;
+var img4Clicks = 0;
+var img5Clicks = 0;
+var img6Clicks = 0;
+var img7Clicks = 0;
 var clickOrder = [];
-var clickCounts = [];
 
 window.onload = function(){
 	//assign images to variables for ease of reading
@@ -95,57 +94,181 @@ function clicked(pic){
 	var img5In = false;
 	var img6In = false;
 	var img7In = false;
-	var clicksRecipt;
+	var clicksRecipt ="";
 	
 	//Make sure number of clicks is up to date
 	for(var i = 0; i < 8; i++){
 		//check to see who is highest
 		if(!img0In){ //if img0 has not been put in the list
             //see if img0 has been clicked more then any others not in the list
-            if(img0Clicks<img1Clicks){
+            if(img0Clicks<img1Clicks&&!img1In){
                 
-            } else if (img0Clicks<img2Clicks) {
+            } else if (img0Clicks<img2Clicks&&!img2In) {
                 
-            } else if (img0Clicks<img3Clicks) {
+            } else if (img0Clicks<img3Clicks&&!img3In) {
                 
-            } else if (img0Clicks<img4Clicks) {
+            } else if (img0Clicks<img4Clicks&&!img4In) {
                 
-            } else if (img0Clicks<img5Clicks) {
+            } else if (img0Clicks<img5Clicks&&!img5In) {
                 
-            } else if (img0Clicks<img6Clicks) {
+            } else if (img0Clicks<img6Clicks&&!img6In) {
                 
-            } else if (img0Clicks<img7Clicks) {
+            } else if (img0Clicks<img7Clicks&&!img7In) {
                 
             } else {
                 img0In = true;
-                clicksRecipt += "Image 0: ";
-                clickCounts.push(img0Clicks);
+                clicksRecipt += "Image 0: " + img0Clicks + "; ";
             }
 		}
         if(!img1In){
             //see if img1 has been clicked more then any others not in the list
-            if(img1Clicks<img0Clicks){
+            if(img1Clicks<img0Clicks&&!img0In){
                 
-            } else if (img1Clicks<img2Clicks) {
+            } else if (img1Clicks<img2Clicks&&!img2In) {
                 
-            } else if (img1Clicks<img3Clicks) {
+            } else if (img1Clicks<img3Clicks&&!img3In) {
                 
-            } else if (img1Clicks<img4Clicks) {
+            } else if (img1Clicks<img4Clicks&&!img4In) {
                 
-            } else if (img1Clicks<img5Clicks) {
+            } else if (img1Clicks<img5Clicks&&!img5In) {
                 
-            } else if (img1Clicks<img6Clicks) {
+            } else if (img1Clicks<img6Clicks&&img6In) {
                 
-            } else if (img1Clicks<img7Clicks) {
+            } else if (img1Clicks<img7Clicks&&img7In) {
                 
             } else {
                 img1In = true;
-                clicksRecipt += "Image 1: ";
-                clickCounts.push(img1Clicks);
+                clicksRecipt += "Image 1: " + img1Clicks + "; ";
+            }
+        }
+        if(!img2In){
+            //see if img2 has been clicked more then any others not in the list
+            if(img2Clicks<img0Clicks&&!img0In){
+                
+            } else if (img2Clicks<img1Clicks&&!img1In) {
+                
+            } else if (img2Clicks<img3Clicks&&!img3In) {
+                
+            } else if (img2Clicks<img4Clicks&&!img4In) {
+                
+            } else if (img2Clicks<img5Clicks&&!img5In) {
+                
+            } else if (img2Clicks<img6Clicks&&img6In) {
+                
+            } else if (img2Clicks<img7Clicks&&img7In) {
+                
+            } else {
+                img2In = true;
+                clicksRecipt += "Image 2: " + img2Clicks + "; ";
+            }
+        }
+        if(!img3In){
+            //see if img3 has been clicked more then any others not in the list
+            if(img3Clicks<img0Clicks&&!img0In){
+                
+            } else if (img3Clicks<img1Clicks&&!img1In) {
+                
+            } else if (img3Clicks<img2Clicks&&!img2In) {
+                
+            } else if (img3Clicks<img4Clicks&&!img4In) {
+                
+            } else if (img3Clicks<img5Clicks&&!img5In) {
+                
+            } else if (img3Clicks<img6Clicks&&img6In) {
+                
+            } else if (img3Clicks<img7Clicks&&img7In) {
+                
+            } else {
+                img3In = true;
+                clicksRecipt += "Image 3: " + img3Clicks + "; ";
+            }
+        }
+        if(!img4In){
+            //see if img4 has been clicked more then any others not in the list
+            if(img4Clicks<img0Clicks&&!img0In){
+                
+            } else if (img4Clicks<img1Clicks&&!img1In) {
+                
+            } else if (img4Clicks<img2Clicks&&!img2In) {
+                
+            } else if (img4Clicks<img3Clicks&&!img3In) {
+                
+            } else if (img4Clicks<img5Clicks&&!img5In) {
+                
+            } else if (img4Clicks<img6Clicks&&img6In) {
+                
+            } else if (img4Clicks<img7Clicks&&img7In) {
+                
+            } else {
+                img4In = true;
+                clicksRecipt += "Image 4: " + img4Clicks + "; ";
+            }
+        }
+        if(!img5In){
+            //see if img5 has been clicked more then any others not in the list
+            if(img5Clicks<img0Clicks&&!img0In){
+                
+            } else if (img5Clicks<img1Clicks&&!img1In) {
+                
+            } else if (img5Clicks<img2Clicks&&!img2In) {
+                
+            } else if (img5Clicks<img3Clicks&&!img3In) {
+                
+            } else if (img5Clicks<img4Clicks&&!img4In) {
+                
+            } else if (img5Clicks<img6Clicks&&img6In) {
+                
+            } else if (img5Clicks<img7Clicks&&img7In) {
+                
+            } else {
+                img5In = true;
+                clicksRecipt += "Image 5: " + img5Clicks + "; ";
+            }
+        }
+        if(!img6In){
+            //see if img6 has been clicked more then any others not in the list
+            if(img6Clicks<img0Clicks&&!img0In){
+                
+            } else if (img6Clicks<img1Clicks&&!img1In) {
+                
+            } else if (img6Clicks<img2Clicks&&!img2In) {
+                
+            } else if (img6Clicks<img3Clicks&&!img3In) {
+                
+            } else if (img6Clicks<img4Clicks&&!img4In) {
+                
+            } else if (img6Clicks<img5Clicks&&img5In) {
+                
+            } else if (img6Clicks<img7Clicks&&img7In) {
+                
+            } else {
+                img6In = true;
+                clicksRecipt += "Image 6: " + img6Clicks + "; ";
+            }
+        }
+        if(!img7In){
+            //see if img7 has been clicked more then any others not in the list
+            if(img7Clicks<img0Clicks&&!img0In){
+                
+            } else if (img7Clicks<img1Clicks&&!img1In) {
+                
+            } else if (img7Clicks<img2Clicks&&!img2In) {
+                
+            } else if (img7Clicks<img3Clicks&&!img3In) {
+                
+            } else if (img7Clicks<img4Clicks&&!img4In) {
+                
+            } else if (img7Clicks<img5Clicks&&img5In) {
+                
+            } else if (img7Clicks<img6Clicks&&img6In) {
+                
+            } else {
+                img7In = true;
+                clicksRecipt += "Image 7: " + img7Clicks + "; ";
             }
         }
 	}
-	
+    console.log("Click Order: " + clickOrder);
 	//Print out who has been clicked and how many times in descending order
-	console.log(clicksRecipt);
+	console.log("Number of clicks: " + clicksRecipt);
 };
