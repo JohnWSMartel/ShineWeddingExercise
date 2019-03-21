@@ -100,10 +100,50 @@ function clicked(pic){
 	//Make sure number of clicks is up to date
 	for(var i = 0; i < 8; i++){
 		//check to see who is highest
-		if(img0Clicks>img1Clicks){ //if img0 has been clicked more then any others
-			clicksRecipt += "Image 0: ";
-			clickCounts.push(img0Clicks);
+		if(!img0In){ //if img0 has not been put in the list
+            //see if img0 has been clicked more then any others not in the list
+            if(img0Clicks<img1Clicks){
+                
+            } else if (img0Clicks<img2Clicks) {
+                
+            } else if (img0Clicks<img3Clicks) {
+                
+            } else if (img0Clicks<img4Clicks) {
+                
+            } else if (img0Clicks<img5Clicks) {
+                
+            } else if (img0Clicks<img6Clicks) {
+                
+            } else if (img0Clicks<img7Clicks) {
+                
+            } else {
+                img0In = true;
+                clicksRecipt += "Image 0: ";
+                clickCounts.push(img0Clicks);
+            }
 		}
+        if(!img1In){
+            //see if img1 has been clicked more then any others not in the list
+            if(img1Clicks<img0Clicks){
+                
+            } else if (img1Clicks<img2Clicks) {
+                
+            } else if (img1Clicks<img3Clicks) {
+                
+            } else if (img1Clicks<img4Clicks) {
+                
+            } else if (img1Clicks<img5Clicks) {
+                
+            } else if (img1Clicks<img6Clicks) {
+                
+            } else if (img1Clicks<img7Clicks) {
+                
+            } else {
+                img1In = true;
+                clicksRecipt += "Image 1: ";
+                clickCounts.push(img1Clicks);
+            }
+        }
 	}
 	
 	//Print out who has been clicked and how many times in descending order
