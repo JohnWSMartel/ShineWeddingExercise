@@ -14,7 +14,7 @@ var img4Clicks = 0;
 var img5Clicks = 0;
 var img6Clicks = 0;
 var img7Clicks = 0;
-var clickOrder = [];
+var clickOrder;
 
 window.onload = function(){
 	//assign images to variables for ease of reading
@@ -30,36 +30,46 @@ window.onload = function(){
 	//making the images clickable
 	img0.addEventListener('click', function (e) {
 		img0Clicks++;
-		clicked('img0');
+		clicked(img0);
 	});
 	img1.addEventListener('click', function (e) {
 		img1Clicks++;
-		clicked('img1');
+		clicked(img1);
 	});
 	img2.addEventListener('click', function (e) {
 		img2Clicks++;
-		clicked('img2');
+		clicked(img2);
 	});
 	img3.addEventListener('click', function (e) {
 		img3Clicks++;
-		clicked('img3');
+		clicked(img3);
 	});
 	img4.addEventListener('click', function (e) {
 		img4Clicks++;
-		clicked('img4');
+		clicked(img4);
 	});
 	img5.addEventListener('click', function (e) {
 		img5Clicks++;
-		clicked('img5');
+		clicked(img5);
 	});
 	img6.addEventListener('click', function (e) {
 		img6Clicks++;
-		clicked('img6');
+		clicked(img6);
 	});
 	img7.addEventListener('click', function (e) {
 		img7Clicks++;
-		clicked('img7');
+		clicked(img7);
 	});
+	
+	//make the values of the images variables in clickOrder
+	if(window.localStorage.getItem('images') !== null){
+		//console.log(JSON.parse(window.localStorage.getItem('images'))[0]); <-- This is returning the first thing clicked before reload
+		console.log(JSON.parse(window.localStorage.getItem('images'))[0].src);
+		img0.src = JSON.parse(window.localStorage.getItem('images'))[0].src;
+	}
+	
+	//reset click order
+	clickOrder = [];
 };
 
 //Function called everytime anything is clicked
@@ -268,7 +278,9 @@ function clicked(pic){
             }
         }
 	}
-    console.log("Click Order: " + clickOrder);
+	
+	//Save to local storage
+	window.localStorage.setItem('images',JSON.stringify(clickOrder));
 	//Print out who has been clicked and how many times in descending order
 	console.log("Number of clicks: " + clicksRecipt);
 };
