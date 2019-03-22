@@ -14,7 +14,7 @@ var img4Clicks = 0;
 var img5Clicks = 0;
 var img6Clicks = 0;
 var img7Clicks = 0;
-var clickOrder;
+var clickOrder = [];
 
 window.onload = function(){
 	//assign images to variables for ease of reading
@@ -61,15 +61,18 @@ window.onload = function(){
 		clicked(img7);
 	});
 	
+	console.log("img0 src "+img0.src);
+	
 	//make the values of the images variables in clickOrder
 	if(window.localStorage.getItem('images') !== null){
 		//console.log(JSON.parse(window.localStorage.getItem('images'))[0]); <-- This is returning the first thing clicked before reload
-		console.log(JSON.parse(window.localStorage.getItem('images'))[0].src);
+		console.log("First Item Retrived src: "+JSON.parse(window.localStorage.getItem('images'))[0].src);
 		img0.src = JSON.parse(window.localStorage.getItem('images'))[0].src;
+		
+		for(var i = 0; i < JSON.parse(window.localStorage.getItem('images')).length;i++){
+			console.log(JSON.parse(window.localStorage.getItem('images'))[i]);
+		}
 	}
-	
-	//reset click order
-	clickOrder = [];
 };
 
 //Function called everytime anything is clicked
