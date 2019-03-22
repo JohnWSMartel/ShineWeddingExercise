@@ -14,7 +14,7 @@ var img4Clicks = 0;
 var img5Clicks = 0;
 var img6Clicks = 0;
 var img7Clicks = 0;
-var clickOrder = [];
+var clickOrder = {};
 
 window.onload = function(){
 	//assign images to variables for ease of reading
@@ -62,10 +62,10 @@ window.onload = function(){
 	});
 	
 	console.log("img0 src "+img0.src);
+    console.dir(JSON.parse(window.localStorage.getItem('images')));
 	
 	//make the values of the images variables in clickOrder
 	if(window.localStorage.getItem('images') !== null){
-		//console.log(JSON.parse(window.localStorage.getItem('images'))[0]); <-- This is returning the first thing clicked before reload
 		console.log("First Item Retrived src: "+JSON.parse(window.localStorage.getItem('images'))[0].src);
 		img0.src = JSON.parse(window.localStorage.getItem('images'))[0].src;
 		
@@ -81,7 +81,12 @@ function clicked(pic){
 	var add = true;
 	//if nothing has been clicked yet, start the array
 	if(clickOrder.length == 0){
-		clickOrder.push(pic);
+        clickOrder += [
+            {
+                imgName: pic.id;
+                imgsrc: pic.src;
+            }
+        ]
 	} else {
 		//otherwise look through the whole array
 		for(var i = 0; i < clickOrder.length; i++){
@@ -94,7 +99,12 @@ function clicked(pic){
 		//if it needs to be added
 		if(add){
 			//add it
-			clickOrder.push(pic);
+			clickOrder += [
+                {
+                    imgName: pic.id;
+                    imgsrc: pic.src;
+                }
+            ]
 		}
 	}
 	
@@ -282,6 +292,7 @@ function clicked(pic){
         }
 	}
 	
+    console.log(clickOrder[0].src);
 	//Save to local storage
 	window.localStorage.setItem('images',JSON.stringify(clickOrder));
 	//Print out who has been clicked and how many times in descending order
