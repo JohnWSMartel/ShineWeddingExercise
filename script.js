@@ -73,8 +73,6 @@ window.onload = function(){
 		
 		//loop through the stored images and reassign src
 		for(var i = 0; i < imageReassignment.length;i++){
-			//this returns the srcs
-			console.log(JSON.parse(window.localStorage.getItem('images'))[i]);
 			
 			//Keeping track of which images have moved
 			for(var a = 0; a<startingSrc.length;a++){

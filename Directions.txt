@@ -4,9 +4,9 @@ Handle click events on the <img> elements so you can keep track of the order in 
 
 Each <img> element should only allow a single click to specify its order. (done)
 
-Save the order of the images to local storage and then read the order of the images back from local storage on page load.
-Use the stored order on page load (if set) to set the initial order of the images; otherwise use the previous ordering.
-All images should be shown on page load/load regardless of how many images were clicked previously.
+Save the order of the images to local storage and then read the order of the images back from local storage on page load. (DONE)
+Use the stored order on page load (if set) to set the initial order of the images; otherwise use the previous ordering.(DONE)
+All images should be shown on page load/load regardless of how many images were clicked previously.(DONE)
 
 Count image clicks on each image and sort the click counts so that the images with the most click counts are listed in descending order. Display or log this information. (Done)
 
