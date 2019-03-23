@@ -14,7 +14,7 @@ var img4Clicks = 0;
 var img5Clicks = 0;
 var img6Clicks = 0;
 var img7Clicks = 0;
-var clickOrder = {};
+var clickOrder = [];
 
 window.onload = function(){
 	//assign images to variables for ease of reading
@@ -61,16 +61,40 @@ window.onload = function(){
 		clicked(img7);
 	});
 	
-	console.log("img0 src "+img0.src);
-    console.dir(JSON.parse(window.localStorage.getItem('images')));
-	
 	//make the values of the images variables in clickOrder
 	if(window.localStorage.getItem('images') !== null){
-		console.log("First Item Retrived src: "+JSON.parse(window.localStorage.getItem('images'))[0].src);
-		img0.src = JSON.parse(window.localStorage.getItem('images'))[0].src;
 		
-		for(var i = 0; i < JSON.parse(window.localStorage.getItem('images')).length;i++){
+		//array to hold images
+		var moddedSet = [img0,img1,img2,img3,img4,img5,img6,img7];
+		//variable to hold default srcs
+		var startingSrc = [img0.src,img1.src,img2.src,img3.src,img4.src,img5.src,img6.src,img7.src];
+		//variable to store array
+		var imageReassignment = JSON.parse(window.localStorage.getItem('images'));
+		
+		//loop through the stored images and reassign src
+		for(var i = 0; i < imageReassignment.length;i++){
+			//this returns the srcs
 			console.log(JSON.parse(window.localStorage.getItem('images'))[i]);
+			
+			//Keeping track of which images have moved
+			for(var a = 0; a<startingSrc.length;a++){
+				if(startingSrc[a]==imageReassignment[i]){
+					startingSrc.splice(a,1);
+					break;
+				}
+			}
+			
+			//go through all 8 images
+			for(var b =0; b<moddedSet.length; b++){
+				//look at clicked images
+				if (b < imageReassignment.length) {
+					//put clicked images to the front
+					moddedSet[b].src = imageReassignment[b];
+				} else {
+					//make sure all other images still exist
+					moddedSet[b].src = startingSrc[b-imageReassignment.length];
+				}
+			}
 		}
 	}
 };
@@ -81,12 +105,7 @@ function clicked(pic){
 	var add = true;
 	//if nothing has been clicked yet, start the array
 	if(clickOrder.length == 0){
-        clickOrder += [
-            {
-                imgName: pic.id;
-                imgsrc: pic.src;
-            }
-        ]
+		clickOrder.push(pic.src);
 	} else {
 		//otherwise look through the whole array
 		for(var i = 0; i < clickOrder.length; i++){
@@ -99,12 +118,7 @@ function clicked(pic){
 		//if it needs to be added
 		if(add){
 			//add it
-			clickOrder += [
-                {
-                    imgName: pic.id;
-                    imgsrc: pic.src;
-                }
-            ]
+			clickOrder.push(pic.src);
 		}
 	}
 	
@@ -117,7 +131,7 @@ function clicked(pic){
 	var img5In = false;
 	var img6In = false;
 	var img7In = false;
-	var clicksRecipt ="";
+	var clicksReceipt ="";
 	
 	//Make sure number of clicks is up to date
 	for(var i = 0; i < 8; i++){
@@ -140,7 +154,7 @@ function clicked(pic){
                 
             } else {
                 img0In = true;
-                clicksRecipt += "Image 0: " + img0Clicks + "; ";
+                clicksReceipt += "Image 0: " + img0Clicks + "; ";
             }
 		}
         if(!img1In){
@@ -161,7 +175,7 @@ function clicked(pic){
                 
             } else {
                 img1In = true;
-                clicksRecipt += "Image 1: " + img1Clicks + "; ";
+                clicksReceipt += "Image 1: " + img1Clicks + "; ";
             }
         }
         if(!img2In){
@@ -182,7 +196,7 @@ function clicked(pic){
                 
             } else {
                 img2In = true;
-                clicksRecipt += "Image 2: " + img2Clicks + "; ";
+                clicksReceipt += "Image 2: " + img2Clicks + "; ";
             }
         }
         if(!img3In){
@@ -203,7 +217,7 @@ function clicked(pic){
                 
             } else {
                 img3In = true;
-                clicksRecipt += "Image 3: " + img3Clicks + "; ";
+                clicksReceipt += "Image 3: " + img3Clicks + "; ";
             }
         }
         if(!img4In){
@@ -224,7 +238,7 @@ function clicked(pic){
                 
             } else {
                 img4In = true;
-                clicksRecipt += "Image 4: " + img4Clicks + "; ";
+                clicksReceipt += "Image 4: " + img4Clicks + "; ";
             }
         }
         if(!img5In){
@@ -245,7 +259,7 @@ function clicked(pic){
                 
             } else {
                 img5In = true;
-                clicksRecipt += "Image 5: " + img5Clicks + "; ";
+                clicksReceipt += "Image 5: " + img5Clicks + "; ";
             }
         }
         if(!img6In){
@@ -266,7 +280,7 @@ function clicked(pic){
                 
             } else {
                 img6In = true;
-                clicksRecipt += "Image 6: " + img6Clicks + "; ";
+                clicksReceipt += "Image 6: " + img6Clicks + "; ";
             }
         }
         if(!img7In){
@@ -287,14 +301,13 @@ function clicked(pic){
                 
             } else {
                 img7In = true;
-                clicksRecipt += "Image 7: " + img7Clicks + "; ";
+                clicksReceipt += "Image 7: " + img7Clicks + "; ";
             }
         }
 	}
 	
-    console.log(clickOrder[0].src);
 	//Save to local storage
 	window.localStorage.setItem('images',JSON.stringify(clickOrder));
 	//Print out who has been clicked and how many times in descending order
-	console.log("Number of clicks: " + clicksRecipt);
+	console.log("Number of clicks: " + clicksReceipt);
 };
